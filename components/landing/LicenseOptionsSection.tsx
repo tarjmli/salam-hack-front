@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
 import { Check, X, Crown, Zap, Star, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { CardContainer, CardBody, CardItem } from "../animation/3d-card"
 
 const licenseOptions = [
   {
@@ -12,12 +12,12 @@ const licenseOptions = [
     price: "$2.99",
     icon: <Star className="w-6 h-6" />,
     features: [
-      "Used for Music Recording",
-      "Distribute up to 5,000 copies",
-      "75,000 Online Audio Streams",
-      "1 Music Video",
-      "For Profit Live Performances",
-      "Radio Broadcasting rights (2 Stations)",
+      "Automated Translation",
+      "Up to 5,000 Words per Month",
+      "75,000 Character Limit",
+      "1 Project",
+      "Collaborative Editing",
+      "Glossary and Style Guide Support",
     ],
     bulkDeal: "BUY 1 TRACK, GET 1 FREE!",
   },
@@ -26,12 +26,12 @@ const licenseOptions = [
     price: "$4.99",
     icon: <Zap className="w-6 h-6" />,
     features: [
-      "Used for Music Recording",
-      "Distribute up to 10,000 copies",
-      "150,000 Online Audio Streams",
-      "1 Music Video",
-      "For Profit Live Performances",
-      "Radio Broadcasting rights (UNLIMITED Stations)",
+ "Automated Translation",
+      "Up to 5,000 Words per Month",
+      "75,000 Character Limit",
+      "1 Project",
+      "Collaborative Editing",
+      "Glossary and Style Guide Support",
     ],
     popular: true,
   },
@@ -40,11 +40,12 @@ const licenseOptions = [
     price: "$7.99",
     icon: <Crown className="w-6 h-6" />,
     features: [
-      "Used for Music Recording",
-      "Distribute up to 20,000 copies",
-      "500,000 Online Audio Streams",
-      "1 Music Video",
-      "Non-profit Live Performances only",
+      "Automated Translation",
+      "Up to 5,000 Words per Month",
+      "75,000 Character Limit",
+      "1 Project",
+      "Collaborative Editing",
+      "Glossary and Style Guide Support",
     ],
     notIncluded: ["No Radio Broadcasting rights"],
   },
@@ -53,12 +54,12 @@ const licenseOptions = [
     price: "$8.99",
     icon: <Globe className="w-6 h-6" />,
     features: [
-      "Used for Music Recording",
-      "Distribute up to UNLIMITED copies",
-      "UNLIMITED Online Audio Streams",
-      "UNLIMITED Music Video",
-      "For Profit Live Performances",
-      "Radio Broadcasting rights (UNLIMITED Stations)",
+      "Automated Translation",
+      "Up to 5,000 Words per Month",
+      "75,000 Character Limit",
+      "1 Project",
+      "Collaborative Editing",
+      "Glossary and Style Guide Support",
     ],
   },
 ]
@@ -105,79 +106,85 @@ export default function LicenseOptionsSection() {
               }}
               initial="hidden"
               animate={controls}
-              onHoverStart={() => setHoveredCard(index)}
-              onHoverEnd={() => setHoveredCard(null)}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <Card
-                className={`relative h-full ${
-                  hoveredCard === index ? "scale-105" : "scale-100"
-                } transition-all duration-300`}
-              >
-                <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-white/20 to-white/0">
-                  <div className="absolute inset-0 rounded-lg bg-black"></div>
-                </div>
-
-                {option.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-white text-black px-4 py-1 rounded-full text-sm font-semibold animate-pulse">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <CardContent className="relative p-6 rounded-lg h-full flex flex-col">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex p-3 rounded-full bg-zinc-900 border border-white/10 mb-4">
-                      {option.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{option.name}</h3>
-                    <div className="text-3xl font-bold">{option.price}</div>
+              <CardContainer containerClassName="py-0" className="h-full border">
+                <CardBody className="relative h-full w-full rounded-lg transition-all duration-300">
+                  <div className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-br from-white/20 to-white/0">
+                    <div className="absolute inset-0 rounded-lg bg-black"></div>
                   </div>
 
-                  <div className="flex-grow">
-                    <ul className="space-y-3 mb-6">
-                      {option.features.map((feature, i) => (
-                        <motion.li
-                          key={i}
-                          className="flex items-start"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={hoveredCard === index ? { opacity: 1, x: 0 } : {}}
-                          transition={{ duration: 0.3, delay: i * 0.05 }}
-                        >
-                          <Check className="h-5 w-5 text-white mr-2 shrink-0 mt-0.5" />
-                          <span className="text-sm text-zinc-300">{feature}</span>
-                        </motion.li>
-                      ))}
-                      {option.notIncluded?.map((feature, i) => (
-                        <motion.li
-                          key={i}
-                          className="flex items-start text-zinc-500"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={hoveredCard === index ? { opacity: 1, x: 0 } : {}}
-                          transition={{ duration: 0.3, delay: (option.features.length + i) * 0.05 }}
-                        >
-                          <X className="h-5 w-5 text-zinc-500 mr-2 shrink-0 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {option.bulkDeal && (
-                    <div className="mb-4">
-                      <p className="text-sm font-semibold text-white bg-white/5 py-2 px-3 rounded-lg border border-white/10 animate-pulse">
-                        {option.bulkDeal}
-                      </p>
-                    </div>
+                  {option.popular && (
+                    <CardItem translateZ={40} className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-white text-black px-4 py-1 rounded-full text-sm font-semibold animate-pulse">
+                        Most Popular
+                      </span>
+                    </CardItem>
                   )}
 
-                  <Button asChild className={`w-full bg-white text-black hover:bg-zinc-200 transition-colors`}>
-                    <a href="https://drqnnel.beatstars.com" target="_blank" rel="noopener noreferrer">
-                      Get Started
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+                  <div className="relative p-6 rounded-lg h-full flex flex-col">
+                    {/* Title and price - always visible */}
+                    <CardItem translateZ={30} className="text-center mb-6">
+                      <div className="inline-flex p-3 rounded-full bg-zinc-900 border border-white/10 mb-4">
+                        {option.icon}
+                      </div>
+                      <h3 className="text-xl font-bold mb-2 text-white">{option.name}</h3>
+                      <div className="text-3xl font-bold text-white">{option.price}</div>
+                    </CardItem>
+
+                    {/* Features - only visible on hover */}
+                    <div
+                      className={`flex-grow transition-opacity duration-300 ${hoveredCard === index ? "opacity-100" : "opacity-0"}`}
+                    >
+                      <CardItem translateZ={40} className="flex-grow">
+                        <ul className="space-y-3 mb-6">
+                          {option.features.map((feature, i) => (
+                            <motion.li
+                              key={i}
+                              className="flex items-start"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={hoveredCard === index ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3, delay: i * 0.05 }}
+                            >
+                              <Check className="h-5 w-5 text-white mr-2 shrink-0 mt-0.5" />
+                              <span className="text-sm text-zinc-300">{feature}</span>
+                            </motion.li>
+                          ))}
+                          {option.notIncluded?.map((feature, i) => (
+                            <motion.li
+                              key={i}
+                              className="flex items-start text-zinc-500"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={hoveredCard === index ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3, delay: (option.features.length + i) * 0.05 }}
+                            >
+                              <X className="h-5 w-5 text-zinc-500 mr-2 shrink-0 mt-0.5" />
+                              <span className="text-sm">{feature}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </CardItem>
+
+                      {option.bulkDeal && (
+                        <CardItem translateZ={50} className="mb-4">
+                          <p className="text-sm font-semibold text-white bg-white/5 py-2 px-3 rounded-lg border border-white/10 animate-pulse">
+                            {option.bulkDeal}
+                          </p>
+                        </CardItem>
+                      )}
+
+                      <CardItem translateZ={60}>
+                        <Button asChild className="w-full bg-white text-black hover:bg-zinc-200 transition-colors">
+                          <a href="https://drqnnel.beatstars.com" target="_blank" rel="noopener noreferrer">
+                            Get Started
+                          </a>
+                        </Button>
+                      </CardItem>
+                    </div>
+                  </div>
+                </CardBody>
+              </CardContainer>
             </motion.div>
           ))}
         </div>

@@ -118,7 +118,7 @@ export default function I18nGeminiHero() {
       </div>
 
       {/* Gemini Effect SVG Container */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-screen h-full">
         <svg
           width="100%"
           height="100%"
