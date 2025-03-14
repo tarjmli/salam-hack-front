@@ -1,32 +1,23 @@
-import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/ui/theme-provider";
-
 import "./globals.css";
-import ReactQueryProvider from "@/lib/providers/react-query";
-import { Toaster } from "sonner";
-import AuthProvider from "@/components/auth/AuthProvider.server";
+import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Salam Hack",
-  description: "Salam Hack Frontend",
+  title: "tarjemli - Premium Beats",
+  description: "Discover and purchase unique beats crafted by tarjemli",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Toaster />
-          <ReactQueryProvider>
-            <AuthProvider>
-              <main className="dark">{children}</main>
-            </AuthProvider>
-          </ReactQueryProvider>
-        </ThemeProvider>
+      <body className={`${spaceGrotesk.className} bg-black text-white pb-20`}>
+        {children}
       </body>
     </html>
   );
