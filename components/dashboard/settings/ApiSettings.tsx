@@ -138,7 +138,7 @@ export default function ApiSettings() {
           <div>
             <h3 className="text-lg font-medium">استخدام API</h3>
             <p className="text-sm text-muted-foreground">
-              مراقبة استخدامك لواجهة API وحدودها.
+              مراقبة استخدامك لواجهة API وحدودها
             </p>
           </div>
 
