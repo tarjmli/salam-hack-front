@@ -15,7 +15,9 @@ export default async function Dashboard() {
       <header className="border-b">
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-bold">Tarjemli</span>
+            <Link href={"/"}>
+              <span className="text-xl font-bold">Tarjemli</span>
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm">

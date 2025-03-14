@@ -104,22 +104,22 @@ export default function I18nGeminiHero() {
   const stats = [
     {
       icon: <Globe className="w-6 h-6" />,
-      label: "Languages Supported",
+      label: "اللغات المدعومة",
       value: "50+",
     },
     {
       icon: <Languages className="w-6 h-6" />,
-      label: "Translations Processed",
+      label: "الترجمات المعالجة",
       value: "1M+",
     },
     {
       icon: <Code className="w-6 h-6" />,
-      label: "Integrations",
+      label: "التكاملات",
       value: "20+",
     },
     {
       icon: <Workflow className="w-6 h-6" />,
-      label: "Automation Workflows",
+      label: "مهام الأتمتة",
       value: "100+",
     },
   ];
@@ -224,7 +224,7 @@ export default function I18nGeminiHero() {
           >
             <h1 className="text-7xl md:text-8xl font-bold mb-6 tracking-tight relative">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
-                Automate Your i18n
+                أتمتة i18n الخاص بك{" "}
               </span>
               <motion.span
                 className="absolute -inset-1 bg-white rounded-full blur-3xl"
@@ -238,9 +238,9 @@ export default function I18nGeminiHero() {
               />
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-zinc-400 max-w-3xl mx-auto">
-              Seamlessly translate and localize your content with our AI-powered
-              platform. Connect your apps, automate workflows, and reach global
-              audiences effortlessly.
+              ترجم محتواك وحدده محليًا بسلاسة مع منصتنا المدعومة بالذكاء
+              الاصطناعي. اربط تطبيقاتك، وأتمت سير العمل، وتواصل مع جماهيرك
+              العالمية بسهولة.{" "}
             </p>
             <div className="relative inline-block">
               <motion.div
@@ -257,7 +257,7 @@ export default function I18nGeminiHero() {
                     router.push("/dashboard");
                   }}
                 >
-                  <span className="relative z-10">Get Started Free</span>
+                  <span className="relative z-10">ابدأ مجانًا</span>
                   <motion.span
                     className="absolute inset-0 bg-gradient-to-r from-zinc-200 to-white"
                     initial={{ x: "100%" }}

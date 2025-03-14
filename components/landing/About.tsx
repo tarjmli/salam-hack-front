@@ -8,20 +8,24 @@ import { Headphones, Music, Mic2, Award } from "lucide-react";
 const achievements = [
   {
     icon: <Headphones className="w-6 h-6" />,
-    label: "Years of Experience",
+    label: "سنوات من الخبرة",
     value: "10+",
   },
   {
     icon: <Music className="w-6 h-6" />,
-    label: "Tracks Produced",
+    label: "المسارات المنتجة",
     value: "500+",
   },
   {
     icon: <Mic2 className="w-6 h-6" />,
-    label: "Artists Collaborated",
+    label: "الفنانون المتعاونون",
     value: "100+",
   },
-  { icon: <Award className="w-6 h-6" />, label: "Awards Won", value: "15+" },
+  {
+    icon: <Award className="w-6 h-6" />,
+    label: "الجوائز المحققة",
+    value: "15+",
+  },
 ];
 
 export default function AboutSection() {
@@ -52,20 +56,16 @@ export default function AboutSection() {
             />
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              About tarjemli
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">حول ترجملي </h2>
             <p className="text-lg mb-6 text-zinc-300">
-              tarjemli is not just a beat maker; hes a sonic architect crafting
-              the soundscapes of tomorrow. With a decade of experience and an
-              ear for innovation, tarjemli pushes the boundaries of whats
-              possible in music production.
+              ترجملي ليس مجرد صانع إيقاعات؛ بل هو مهندس صوتي يرسم ملامح
+              المستقبل. بخبرة تمتد لعقد من الزمن وحسٍّ إبداعي، يتجاوز ترجملي
+              حدود الممكن في إنتاج الموسيقى.{" "}
             </p>
             <p className="text-lg mb-8 text-zinc-300">
-              From chart-topping hits to underground anthems, drannels versatile
-              style and meticulous attention to detail ensure that each beat is
-              not just a track, but a journey waiting to be explored by the
-              right artist.
+              من الأغاني التي تتصدر المخططات إلى الأغاني الكلاسيكية، يضمن أسلوب
+              درانيل المتنوع واهتمامه الدقيق بالتفاصيل أن كل إيقاع ليس مجرد
+              مسار، بل رحلة تنتظر استكشافها من قبل الفنان المناسب.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (

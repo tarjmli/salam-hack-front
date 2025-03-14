@@ -87,7 +87,7 @@ export default function ContactSection() {
           variants={itemVariants}
           className="text-5xl font-bold mb-10 text-center text-zinc-200"
         >
-          Get in Touch
+          تواصل معنا{" "}
         </motion.h2>
         <motion.div
           variants={itemVariants}
@@ -98,7 +98,7 @@ export default function ContactSection() {
               <Input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder="اسمك"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -109,7 +109,7 @@ export default function ContactSection() {
               <Input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="بريدك الإلكتروني"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -119,7 +119,7 @@ export default function ContactSection() {
             <div className="mb-4">
               <Textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="رسالتك"
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -135,7 +135,7 @@ export default function ContactSection() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="animate-spin mr-2" size={18} />
-                    Sending...
+                    إرسال...
                   </>
                 ) : isSubmitted ? (
                   <>
@@ -145,7 +145,7 @@ export default function ContactSection() {
                 ) : (
                   <>
                     <Send className="mr-2" size={18} />
-                    Send Message
+                    إرسال رسالة
                   </>
                 )}
               </span>
