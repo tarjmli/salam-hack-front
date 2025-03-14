@@ -17,7 +17,6 @@ export default async function DashboardPage() {
   // if (!isAuthenticated) redirect("/");
 
   const { data: repos } = await GithubApi.fetchRepos();
-
   return (
     <div className="container mx-auto p-4">
       <div className="mb-8 flex items-center justify-between">
@@ -96,13 +95,13 @@ export default async function DashboardPage() {
           <div className="rounded-md border">
             {repos.map((repo, i) => (
               <div
-                key={repo.id}
+                key={i}
                 className="flex items-center justify-between border-b p-4 last:border-0"
               >
                 <div>
                   <div className="font-medium">{repo.name}</div>
                   <div className="text-sm text-muted-foreground">
-                    Added internationalization {i} ago
+                    Added internationalization {i} day{i !== 1 ? "s" : ""} ago
                   </div>
                 </div>
                 <Button variant="ghost" size="sm">
