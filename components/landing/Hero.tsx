@@ -1,21 +1,29 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform, useMotionValue, useSpring, animate } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Globe, Languages, Code, Workflow } from "lucide-react"
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+  animate,
+} from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Globe, Languages, Code, Workflow } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const FloatingParticle = ({ delay }: { delay: number }) => {
-  const y = useMotionValue(0)
-  const ySpring = useSpring(y, { stiffness: 100, damping: 10 })
+  const y = useMotionValue(0);
+  const ySpring = useSpring(y, { stiffness: 100, damping: 10 });
 
   useEffect(() => {
     const moveParticle = () => {
-      y.set(Math.random() * -100)
-      setTimeout(moveParticle, Math.random() * 5000 + 3000)
-    }
-    setTimeout(moveParticle, delay)
-  }, [y, delay])
+      y.set(Math.random() * -100);
+      setTimeout(moveParticle, Math.random() * 5000 + 3000);
+    };
+    setTimeout(moveParticle, delay);
+  }, [y, delay]);
 
   return (
     <motion.div
@@ -26,63 +34,72 @@ const FloatingParticle = ({ delay }: { delay: number }) => {
         opacity: 0.5,
       }}
     />
-  )
-}
+  );
+};
 
 export default function I18nGeminiHero() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const router = useRouter();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   // Create motion values for path animations that will work regardless of scroll
-  const pathLength1 = useMotionValue(0)
-  const pathLength2 = useMotionValue(0)
-  const pathLength3 = useMotionValue(0)
-  const pathLength4 = useMotionValue(0)
-  const pathLength5 = useMotionValue(0)
+  const pathLength1 = useMotionValue(0);
+  const pathLength2 = useMotionValue(0);
+  const pathLength3 = useMotionValue(0);
+  const pathLength4 = useMotionValue(0);
+  const pathLength5 = useMotionValue(0);
 
   // Also create scroll-based transforms as a fallback
-  const scrollPathLength1 = useTransform(scrollYProgress, [0, 0.8], [0.2, 1])
-  const scrollPathLength2 = useTransform(scrollYProgress, [0, 0.8], [0.15, 1])
-  const scrollPathLength3 = useTransform(scrollYProgress, [0, 0.8], [0.1, 1])
-  const scrollPathLength4 = useTransform(scrollYProgress, [0, 0.8], [0.05, 1])
-  const scrollPathLength5 = useTransform(scrollYProgress, [0, 0.8], [0, 1])
+  // const scrollPathLength1 = useTransform(scrollYProgress, [0, 0.8], [0.2, 1]);
+  // const scrollPathLength2 = useTransform(scrollYProgress, [0, 0.8], [0.15, 1]);
+  // const scrollPathLength3 = useTransform(scrollYProgress, [0, 0.8], [0.1, 1]);
+  // const scrollPathLength4 = useTransform(scrollYProgress, [0, 0.8], [0.05, 1]);
+  // const scrollPathLength5 = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
-  const [isHovered, setIsHovered] = useState(false)
-  const [animationTriggered, setAnimationTriggered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
 
   // Trigger animation on component mount and when scrolling starts
   useEffect(() => {
     // Initial animation on mount
     const sequence = async () => {
       if (!animationTriggered) {
-        setAnimationTriggered(true)
+        setAnimationTriggered(true);
 
         // Animate each path with a slight delay between them
-        await animate(pathLength1, 1, { duration: 2, delay: 0.2 })
-        await animate(pathLength2, 1, { duration: 2, delay: 0.1 })
-        await animate(pathLength3, 1, { duration: 2, delay: 0.1 })
-        await animate(pathLength4, 1, { duration: 2, delay: 0.1 })
-        await animate(pathLength5, 1, { duration: 2, delay: 0.1 })
+        await animate(pathLength1, 1, { duration: 2, delay: 0.2 });
+        await animate(pathLength2, 1, { duration: 2, delay: 0.1 });
+        await animate(pathLength3, 1, { duration: 2, delay: 0.1 });
+        await animate(pathLength4, 1, { duration: 2, delay: 0.1 });
+        await animate(pathLength5, 1, { duration: 2, delay: 0.1 });
       }
-    }
+    };
 
-    sequence()
+    sequence();
 
     // Also update based on scroll
     const unsubscribe = scrollYProgress.onChange((value) => {
       if (value > 0.1 && !animationTriggered) {
-        sequence()
+        sequence();
       }
-    })
+    });
 
-    return () => unsubscribe()
-  }, [pathLength1, pathLength2, pathLength3, pathLength4, pathLength5, scrollYProgress, animationTriggered])
+    return () => unsubscribe();
+  }, [
+    pathLength1,
+    pathLength2,
+    pathLength3,
+    pathLength4,
+    pathLength5,
+    scrollYProgress,
+    animationTriggered,
+  ]);
 
   const stats = [
     {
@@ -105,11 +122,14 @@ export default function I18nGeminiHero() {
       label: "Automation Workflows",
       value: "100+",
     },
-  ]
+  ];
 
   return (
     // bg-gradient-to-b from-zinc-900/50 to-zinc-900
-    <section ref={containerRef} className="min-h-screen  w-full relative overflow-hidden ">
+    <section
+      ref={containerRef}
+      className="min-h-screen  w-full relative overflow-hidden "
+    >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 "></div>
         {[...Array(50)].map((_, i) => (
@@ -191,7 +211,10 @@ export default function I18nGeminiHero() {
         </svg>
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative pt-32 pb-16 px-4 z-10">
+      <motion.div
+        style={{ y, opacity }}
+        className="relative pt-32 pb-16 px-4 z-10"
+      >
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -215,16 +238,24 @@ export default function I18nGeminiHero() {
               />
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-zinc-400 max-w-3xl mx-auto">
-              Seamlessly translate and localize your content with our AI-powered platform. Connect your apps, automate
-              workflows, and reach global audiences effortlessly.
+              Seamlessly translate and localize your content with our AI-powered
+              platform. Connect your apps, automate workflows, and reach global
+              audiences effortlessly.
             </p>
             <div className="relative inline-block">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative z-10">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative z-10"
+              >
                 <Button
                   size="lg"
                   className="bg-white text-black hover:bg-zinc-200 text-lg px-8 py-6 rounded-full transition-colors relative overflow-hidden group"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
+                  onClick={() => {
+                    router.push("/dashboard");
+                  }}
                 >
                   <span className="relative z-10">Get Started Free</span>
                   <motion.span
@@ -258,7 +289,9 @@ export default function I18nGeminiHero() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-zinc-900/50 rounded-xl p-6 backdrop-blur-lg border border-white/10 transition-colors hover:border-white/20"
                 >
-                  <div className="mb-2 text-white/70 flex justify-center">{stat.icon}</div>
+                  <div className="mb-2 text-white/70 flex justify-center">
+                    {stat.icon}
+                  </div>
                   <motion.div
                     className="text-3xl font-bold mb-1"
                     initial={{ opacity: 0 }}
@@ -275,6 +308,5 @@ export default function I18nGeminiHero() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
-

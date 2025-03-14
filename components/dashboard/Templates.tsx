@@ -8,28 +8,28 @@ const templates = [
     description:
       "A starter template with Next.js and react-intl pre-configured",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/1200px-Google_Translate_logo.svg.png",
+      "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a378b4384f2/Screenshot-2025-02-05-154032.png?s=medium",
   },
   {
     id: "2",
     title: "React + i18next",
     description: "A React template with i18next for internationalization",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/1200px-Google_Translate_logo.svg.png",
+      "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a375c24fabe/Screenshot-2025-02-05-152754.png?s=medium",
   },
   {
     id: "3",
     title: "E-commerce Starter",
     description: "Multi-language e-commerce template with product catalog",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/1200px-Google_Translate_logo.svg.png",
+      "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/64a42fba0b3f3/image2023-07-04153738611.png?s=medium",
   },
   {
     id: "4",
     title: "Blog Platform",
     description: "Multilingual blog platform with content management",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/1200px-Google_Translate_logo.svg.png",
+      "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a377d9ef2a8/1733768749612.jpg?s=medium",
   },
 ];
 

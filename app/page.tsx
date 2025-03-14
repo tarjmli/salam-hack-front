@@ -2,7 +2,6 @@
 
 import AboutSection from "@/components/landing/About";
 import ContactSection from "@/components/landing/Contact";
-import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/Hero";
 import InteractiveBackground from "@/components/landing/InteractiveBackground";
 import LicenseOptionsSection from "@/components/landing/LicenseOptionsSection";

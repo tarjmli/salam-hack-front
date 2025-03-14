@@ -44,7 +44,7 @@ export default function RepoList({ repos }: Props) {
               </div>
             </div>
           </div>
-          <Button>Import</Button>
+          <Button>Translate</Button>
         </div>
       ))}
     </div>
