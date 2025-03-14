@@ -25,7 +25,7 @@ export default function Home() {
     <div className="min-h-screen text-white relative">
       <InteractiveBackground />
       <div className="relative z-10">
-        <Header />
+        {/* <Header /> */}
         <main className="container mx-auto px-4">
           <HeroSection />
           <LicenseOptionsSection />

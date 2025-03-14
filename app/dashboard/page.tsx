@@ -1,3 +1,8 @@
+
+import AnimatedContent from "@/components/animation/Animatedcontent";
+import Magnet from "@/components/animation/magnet";
+import Ribbons from "@/components/animation/ribbons";
+import { TextHoverEffect } from "@/components/animation/Texthovereffect";
 import RepositoryDialog from "@/components/dashboard/RepositoryDialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,8 +30,28 @@ export default async function DashboardPage() {
     <div className="container mx-auto p-4">
       
       <div className=" relative mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+      {/* <div style={{ height: '100px', position: 'relative', overflow: 'hidden'}}>
+      <Ribbons
+    baseThickness={30}
+    colors={['#ffffff']}
+    speedMultiplier={0.5}
+    maxAge={500}
+    enableFade={false}
+    enableShaderEffect={true}
+  /> */}
+  {/* <div className="flex items-center space-x-4 text-white">
+ <TextHoverEffect  text="Dashboard"  duration={230} />
+ </div> */}
+ 
+        <h1 className="text-3xl font-semibold">Dashboard</h1>
+ 
+  
+
+      
+        {/* </div> */}
+        <Magnet>
        <RepositoryDialog/>
+       </Magnet>
       
 
       </div>
