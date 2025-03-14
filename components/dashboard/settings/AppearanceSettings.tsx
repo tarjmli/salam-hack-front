@@ -70,10 +70,8 @@ export default function AppearanceSettings() {
   return (
     <>
       <CardHeader>
-        <CardTitle>Appearance</CardTitle>
-        <CardDescription>
-          Customize the appearance of the application to your preference.
-        </CardDescription>
+        <CardTitle>مظهر</CardTitle>
+        <CardDescription>قم بتخصيص مظهر التطبيق حسب تفضيلاتك. </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
@@ -89,7 +87,7 @@ export default function AppearanceSettings() {
               <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <Sun className="h-5 w-5 text-primary" />
               </div>
-              <span className="text-sm font-medium">Light</span>
+              <span className="text-sm font-medium">ضوء</span>
               {theme === "light" && (
                 <div className="absolute right-2 top-2">
                   <Check className="h-4 w-4 text-primary" />
@@ -106,7 +104,7 @@ export default function AppearanceSettings() {
               <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <Moon className="h-5 w-5 text-primary" />
               </div>
-              <span className="text-sm font-medium">Dark</span>
+              <span className="text-sm font-medium">مظلم</span>
               {theme === "dark" && (
                 <div className="absolute right-2 top-2">
                   <Check className="h-4 w-4 text-primary" />
@@ -123,7 +121,7 @@ export default function AppearanceSettings() {
               <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <Laptop className="h-5 w-5 text-primary" />
               </div>
-              <span className="text-sm font-medium">System</span>
+              <span className="text-sm font-medium">نظام</span>
               {theme === "system" && (
                 <div className="absolute right-2 top-2">
                   <Check className="h-4 w-4 text-primary" />
@@ -192,14 +190,14 @@ export default function AppearanceSettings() {
         <Separator />
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Accessibility</h3>
+          <p className="text-lg font-medium">إمكانية الوصول</p>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label htmlFor="animations">Enable animations</Label>
+                <Label htmlFor="animations">تفعيل الحركات</Label>
                 <p className="text-xs text-muted-foreground">
-                  Show animations throughout the interface
+                  عرض الحركات عبر الواجهة بالكامل
                 </p>
               </div>
               <Switch
@@ -211,9 +209,9 @@ export default function AppearanceSettings() {
 
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label htmlFor="reduced-motion">Reduced motion</Label>
+                <Label htmlFor="reduced-motion">تقليل الحركة</Label>
                 <p className="text-xs text-muted-foreground">
-                  Minimize animations for users who prefer reduced motion
+                  تقليل الحركات للمستخدمين الذين يفضلون حركة أقل
                 </p>
               </div>
               <Switch
@@ -226,10 +224,8 @@ export default function AppearanceSettings() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="font-size">Font size ({fontSize}px)</Label>
-                <span className="text-sm text-muted-foreground">
-                  {fontSize}px
-                </span>
+                <Label htmlFor="font-size">حجم الخط ({fontSize}px)</Label>
+                <p className="text-sm text-muted-foreground">{fontSize}px</p>
               </div>
               <Slider
                 id="font-size"
@@ -246,16 +242,16 @@ export default function AppearanceSettings() {
         <Separator />
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Layout</h3>
+          <h3 className="text-lg font-medium">التخطيط</h3>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label htmlFor="sidebar-collapsed">
-                  Collapsed sidebar by default
+                  شريط جانبي مطوي افتراضيًا
                 </Label>
                 <p className="text-xs text-muted-foreground">
-                  Start with the sidebar collapsed when you open the application
+                  ابدأ بتصغير الشريط الجانبي عند فتح التطبيق
                 </p>
               </div>
               <Switch
@@ -267,19 +263,19 @@ export default function AppearanceSettings() {
 
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label htmlFor="content-width">Content width</Label>
+                <Label htmlFor="content-width">عرض المحتوى</Label>
                 <p className="text-xs text-muted-foreground">
-                  Choose how content is displayed across the screen
+                  اختر كيف يتم عرض المحتوى عبر الشاشة
                 </p>
               </div>
               <Select defaultValue="responsive">
                 <SelectTrigger id="content-width" className="w-40">
-                  <SelectValue placeholder="Select width" />
+                  <SelectValue placeholder="اختر العرض" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="responsive">Responsive</SelectItem>
-                  <SelectItem value="full">Full width</SelectItem>
-                  <SelectItem value="contained">Contained</SelectItem>
+                  <SelectItem value="responsive">متجاوب</SelectItem>
+                  <SelectItem value="full">عرض كامل</SelectItem>
+                  <SelectItem value="contained">محتوى محدود</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -289,9 +285,7 @@ export default function AppearanceSettings() {
         <Separator />
 
         <div className="flex justify-end">
-          <Button onClick={handleSaveAppearance}>
-            Save Appearance Settings
-          </Button>
+          <Button onClick={handleSaveAppearance}>حفظ إعدادات المظهر</Button>
         </div>
       </CardContent>
     </>

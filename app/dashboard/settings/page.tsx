@@ -15,18 +15,18 @@ export default function SettingsPage() {
   return (
     <div className="container mx-auto py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Settings</h1>
+        <h1 className="text-3xl font-bold">الإعدادات</h1>
         <p className="text-muted-foreground">
-          Manage your account settings and internationalization preferences
+          قم بإدارة إعدادات حسابك وتفضيلات التدويل
         </p>
       </div>
 
-      <Tabs defaultValue="profile" className="space-y-4">
+      <Tabs defaultValue="profile" className="space-y-4" dir="rtl">
         <TabsList className="grid w-full grid-cols-2 md:grid-cols-6">
-          <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="i18n">Internationalization</TabsTrigger>
-          <TabsTrigger value="api">API</TabsTrigger>
-          <TabsTrigger value="appearance">Appearance</TabsTrigger>
+          <TabsTrigger value="profile">الملف الشخصي</TabsTrigger>
+          <TabsTrigger value="i18n">التدويل</TabsTrigger>
+          <TabsTrigger value="api">واجهة البرمجة (API)</TabsTrigger>
+          <TabsTrigger value="appearance">المظهر</TabsTrigger>
         </TabsList>
 
         <TabsContent value="profile">

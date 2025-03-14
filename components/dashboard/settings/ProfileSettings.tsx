@@ -89,24 +89,23 @@ export default function ProfileSettings() {
   return (
     <>
       <CardHeader>
-        <CardTitle>Profile</CardTitle>
+        <CardTitle>الملف الشخصي</CardTitle>
         <CardDescription>
-          Manage your personal information and how it appears across the
-          platform.
+          قم بإدارة معلوماتك الشخصية وكيفية ظهورها عبر المنصة.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex items-center gap-4">
           <Avatar className="h-20 w-20">
-            <AvatarImage src="/placeholder.svg" alt="Profile" />
+            <AvatarImage src="/placeholder.svg" alt="الملف الشخصي" />
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
           <div>
             <Button variant="outline" size="sm">
-              Change avatar
+              تغيير الصورة الشخصية
             </Button>
             <p className="mt-2 text-xs text-muted-foreground">
-              JPG, GIF or PNG. 1MB max.
+              JPG، GIF أو PNG. الحد الأقصى 1MB.
             </p>
           </div>
         </div>
@@ -118,12 +117,12 @@ export default function ProfileSettings() {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>اسم المستخدم</FormLabel>
                   <FormControl>
                     <Input placeholder="johndoe" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    هذا هو اسم العرض العام الخاص بك.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -134,13 +133,12 @@ export default function ProfileSettings() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>البريد الإلكتروني</FormLabel>
                   <FormControl>
                     <Input placeholder="john.doe@example.com" {...field} />
                   </FormControl>
                   <FormDescription>
-                    We will use this email for notifications and account
-                    recovery.
+                    سنستخدم هذا البريد الإلكتروني للإشعارات واستعادة الحساب.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -151,16 +149,16 @@ export default function ProfileSettings() {
               name="bio"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel>نبذة عنك</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us a little bit about yourself"
+                      placeholder="أخبرنا قليلاً عن نفسك"
                       className="resize-none"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    Brief description for your profile. Max 160 characters.
+                    وصف موجز لملفك الشخصي. الحد الأقصى 160 حرفًا
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -188,7 +186,7 @@ export default function ProfileSettings() {
                 name="urls.website"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Website</FormLabel>
+                    <FormLabel>الموقع الإلكتروني</FormLabel>
                     <FormControl>
                       <Input placeholder="https://example.com" {...field} />
                     </FormControl>
@@ -198,7 +196,7 @@ export default function ProfileSettings() {
               />
             </div>
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Saving..." : "Save changes"}
+              {isLoading ? "جارٍ الحفظ..." : "حفظ التغييرات"}
             </Button>
           </form>
         </Form>

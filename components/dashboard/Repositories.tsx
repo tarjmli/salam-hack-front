@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { IRepo } from "@/types/github";
 import { Clock, Lock } from "lucide-react";
+import TranslateDialog from "./TranslateDialog";
 
 type Props = {
   repos: IRepo[];
@@ -44,7 +44,7 @@ export default function RepoList({ repos }: Props) {
               </div>
             </div>
           </div>
-          <Button>Translate</Button>
+          <TranslateDialog />
         </div>
       ))}
     </div>

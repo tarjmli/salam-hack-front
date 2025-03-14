@@ -1,15 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { useFormik } from "formik";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import * as Yup from "yup";
-import { Mail } from "lucide-react";
 import { useLoginMutation } from "@/lib/services/user.service";
 
 // Types
@@ -68,7 +65,7 @@ export default function LoginPage() {
                 projects, tasks, and reminders, and keep everything up to date.`}
               </p>
               <p>A personalized workspace - tailored to your needs.</p>
-              <p>Log in and let's get started</p>
+              <p>Log in and lets get started</p>
             </div>
           </div>
 

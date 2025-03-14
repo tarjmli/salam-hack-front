@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Copy, Eye, EyeOff, Key, RefreshCw, Trash2 } from "lucide-react";
@@ -22,47 +21,36 @@ export default function ApiSettings() {
   );
   const [showApiKey, setShowApiKey] = useState(false);
   const [rateLimit, setRateLimit] = useState(60);
-  const [webhookUrl, setWebhookUrl] = useState("https://example.com/webhook");
-  const [webhookEnabled, setWebhookEnabled] = useState(true);
 
   const generateNewApiKey = () => {
-    // In a real app, this would call an API to generate a new key
     const newKey =
       "sk_live_" +
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15);
     setApiKey(newKey);
 
-    toast({
-      title: "New API key generated",
-      description: "Your new API key has been generated. Make sure to copy it.",
-    });
+    toast("تم إنشاء مفتاح API جديد. تأكد من نسخه.");
   };
 
   const copyApiKey = () => {
     navigator.clipboard.writeText(apiKey);
-
-    toast({
-      title: "API key copied",
-      description: "Your API key has been copied to the clipboard.",
-    });
+    toast("تم نسخ مفتاح API إلى الحافظة.");
   };
 
   return (
     <>
       <CardHeader>
-        <CardTitle>API Settings</CardTitle>
+        <CardTitle>إعدادات API</CardTitle>
         <CardDescription>
-          Manage your API keys and configure webhooks for programmatic access.
+          إدارة مفاتيح API الخاصة بك وتكوين Webhooks للوصول البرمجي.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-medium">API Keys</h3>
+            <h3 className="text-lg font-medium">مفاتيح API</h3>
             <p className="text-sm text-muted-foreground">
-              Use these keys to authenticate API requests from your
-              applications.
+              استخدم هذه المفاتيح للمصادقة على طلبات API من تطبيقاتك.
             </p>
           </div>
 
@@ -73,7 +61,7 @@ export default function ApiSettings() {
                   <Key className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Live API Key</h4>
+                  <h4 className="font-medium">مفتاح API الفعّال</h4>
                   <div className="flex items-center gap-2">
                     <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
                       {showApiKey
@@ -91,9 +79,6 @@ export default function ApiSettings() {
                       ) : (
                         <Eye className="h-4 w-4" />
                       )}
-                      <span className="sr-only">
-                        {showApiKey ? "Hide API key" : "Show API key"}
-                      </span>
                     </Button>
                     <Button
                       variant="ghost"
@@ -102,7 +87,6 @@ export default function ApiSettings() {
                       onClick={copyApiKey}
                     >
                       <Copy className="h-4 w-4" />
-                      <span className="sr-only">Copy API key</span>
                     </Button>
                   </div>
                 </div>
@@ -110,7 +94,7 @@ export default function ApiSettings() {
               <div className="flex gap-2">
                 <Button variant="outline" size="sm" onClick={generateNewApiKey}>
                   <RefreshCw className="mr-2 h-4 w-4" />
-                  Regenerate
+                  إعادة التوليد
                 </Button>
                 <Button
                   variant="outline"
@@ -118,7 +102,7 @@ export default function ApiSettings() {
                   className="text-destructive"
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  Revoke
+                  إلغاء المفتاح
                 </Button>
               </div>
             </div>
@@ -126,7 +110,7 @@ export default function ApiSettings() {
             <div className="mt-4 space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="rate-limit">
-                  Rate Limit (requests per minute)
+                  عدد الطلبات المسموحة بالدقيقة
                 </Label>
                 <Input
                   id="rate-limit"
@@ -140,9 +124,9 @@ export default function ApiSettings() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline">Created: Mar 14, 2025</Badge>
-                <Badge variant="outline">Last used: 2 hours ago</Badge>
-                <Badge variant="outline">IP restriction: None</Badge>
+                <Badge variant="outline">تم الإنشاء: 14 مارس 2025</Badge>
+                <Badge variant="outline">آخر استخدام: قبل ساعتين</Badge>
+                <Badge variant="outline">تقييد IP: لا يوجد</Badge>
               </div>
             </div>
           </div>
@@ -152,129 +136,28 @@ export default function ApiSettings() {
 
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-medium">Webhooks</h3>
+            <h3 className="text-lg font-medium">استخدام API</h3>
             <p className="text-sm text-muted-foreground">
-              Configure webhooks to receive real-time updates about your
-              internationalization projects.
-            </p>
-          </div>
-
-          <div className="rounded-md border p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h4 className="font-medium">Project Webhook</h4>
-                <p className="text-sm text-muted-foreground">
-                  Receive notifications when projects are processed
-                </p>
-              </div>
-              <Switch
-                checked={webhookEnabled}
-                onCheckedChange={setWebhookEnabled}
-              />
-            </div>
-
-            <div className="mt-4 space-y-2">
-              <Label htmlFor="webhook-url">Webhook URL</Label>
-              <Input
-                id="webhook-url"
-                value={webhookUrl}
-                onChange={(e) => setWebhookUrl(e.target.value)}
-                disabled={!webhookEnabled}
-              />
-
-              <div className="space-y-2">
-                <p className="text-sm font-medium">Events</p>
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-project-created"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-project-created">
-                      project.created
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-project-updated"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-project-updated">
-                      project.updated
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-project-completed"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-project-completed">
-                      project.completed
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-project-failed"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-project-failed">project.failed</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-translation-updated"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-translation-updated">
-                      translation.updated
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Switch
-                      id="event-pr-created"
-                      defaultChecked
-                      disabled={!webhookEnabled}
-                    />
-                    <Label htmlFor="event-pr-created">pr.created</Label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <Button variant="outline">Add Webhook</Button>
-        </div>
-
-        <Separator />
-
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-medium">API Usage</h3>
-            <p className="text-sm text-muted-foreground">
-              Monitor your API usage and limits.
+              مراقبة استخدامك لواجهة API وحدودها.
             </p>
           </div>
 
           <div className="rounded-md border p-4">
             <div className="grid gap-4 sm:grid-cols-3">
               <div>
-                <p className="text-sm text-muted-foreground">This Month</p>
+                <p className="text-sm text-muted-foreground">هذا الشهر</p>
                 <p className="text-2xl font-bold">1,245</p>
-                <p className="text-sm text-muted-foreground">API requests</p>
+                <p className="text-sm text-muted-foreground">طلبات API</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Rate Limit</p>
+                <p className="text-sm text-muted-foreground">الحد الأقصى</p>
                 <p className="text-2xl font-bold">{rateLimit}</p>
-                <p className="text-sm text-muted-foreground">requests/minute</p>
+                <p className="text-sm text-muted-foreground">طلب/دقيقة</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Plan Limit</p>
+                <p className="text-sm text-muted-foreground">حد الخطة</p>
                 <p className="text-2xl font-bold">10,000</p>
-                <p className="text-sm text-muted-foreground">requests/month</p>
+                <p className="text-sm text-muted-foreground">طلب/شهر</p>
               </div>
             </div>
           </div>
@@ -283,7 +166,7 @@ export default function ApiSettings() {
         <Separator />
 
         <div className="flex justify-end">
-          <Button>Save API Settings</Button>
+          <Button>حفظ إعدادات API</Button>
         </div>
       </CardContent>
     </>

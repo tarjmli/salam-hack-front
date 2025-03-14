@@ -34,6 +34,7 @@ import { Checkbox } from "../ui/checkbox";
 import { Badge } from "../ui/badge";
 
 import AnimatedContent from "../animation/Animatedcontent";
+
 export default function RepositoryDialog() {
   const [open, setOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -50,16 +51,15 @@ export default function RepositoryDialog() {
   });
 
   function onSubmit(values: z.infer<typeof reposhema>) {
-    // React Query mutation lramzy
     setOpen(false);
     console.log("Submitted values:", values);
   }
 
   const lang = [
-    { label: "Arabic", value: "arabic" },
-    { label: "English", value: "english" },
-    { label: "French", value: "french" },
-    { label: "Spanish", value: "spanish" },
+    { label: "العربية", value: "arabic" },
+    { label: "الإنجليزية", value: "english" },
+    { label: "الفرنسية", value: "french" },
+    { label: "الإسبانية", value: "spanish" },
   ];
 
   const selectedLanguages = form.watch("language") || [];
@@ -77,16 +77,16 @@ export default function RepositoryDialog() {
       <DialogTrigger asChild>
         <Button variant={"secondary"}>
           <Github className="mr-2 h-4 w-4" />
-          <span>Add Repository</span>
+          <span>إضافة مستودع</span>
         </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
         <AnimatedContent>
           <DialogHeader>
-            <DialogTitle>Add Repository</DialogTitle>
+            <DialogTitle>إضافة مستودع</DialogTitle>
             <DialogDescription>
-              Enter the repository details to import it into your project.
+              أدخل تفاصيل المستودع لاستيراده إلى مشروعك.
             </DialogDescription>
           </DialogHeader>
         </AnimatedContent>
@@ -99,12 +99,9 @@ export default function RepositoryDialog() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Repository Name</FormLabel>
+                      <FormLabel>اسم المستودع</FormLabel>
                       <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="Enter a name for the repository"
-                        />
+                        <Input {...field} placeholder="أدخل اسمًا للمستودع" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -117,9 +114,9 @@ export default function RepositoryDialog() {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description</FormLabel>
+                      <FormLabel>الوصف</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="Enter a description" />
+                        <Input {...field} placeholder="أدخل وصفًا" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -132,7 +129,7 @@ export default function RepositoryDialog() {
                   name="repoURl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Repository URL</FormLabel>
+                      <FormLabel>رابط المستودع</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="https://github.com/owner/repo"
@@ -150,7 +147,7 @@ export default function RepositoryDialog() {
                   name="language"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Languages</FormLabel>
+                      <FormLabel>اللغات</FormLabel>
                       <FormControl>
                         <Collapsible
                           open={languageOpen}
@@ -168,7 +165,7 @@ export default function RepositoryDialog() {
                                   ))
                                 ) : (
                                   <span className="text-muted-foreground">
-                                    Select languages
+                                    اختر اللغات
                                   </span>
                                 )}
                               </div>
@@ -226,7 +223,7 @@ export default function RepositoryDialog() {
                   name="directory"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Component Directory</FormLabel>
+                      <FormLabel>دليل المكونات</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="src/components, src/pages"
@@ -239,7 +236,7 @@ export default function RepositoryDialog() {
                         />
                       </FormControl>
                       <FormDescription className="text-xs">
-                        Enter multiple directories , separated by commas
+                        أدخل أدلة متعددة، مفصولة بفواصل
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -249,7 +246,7 @@ export default function RepositoryDialog() {
               <AnimatedContent>
                 <div className="flex justify-end pt-2">
                   <Button type="submit" className="rounded-md">
-                    Import Repository
+                    استيراد المستودع
                   </Button>
                 </div>
               </AnimatedContent>

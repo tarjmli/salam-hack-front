@@ -16,23 +16,23 @@ export default async function Dashboard() {
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <Link href={"/"}>
-              <span className="text-xl font-bold">Tarjemli</span>
+              <span className="text-xl font-bold">ترجملي</span>
             </Link>
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm">
-              Docs
+              الوثائق
             </Button>
             <Button variant="ghost" size="sm">
-              Help
+              المساعدة
             </Button>
             <Link href={"/dashboard/settings"}>
               <Button variant="ghost" size="sm">
-                Settings
+                الإعدادات
               </Button>
             </Link>
             <Button variant="outline" size="sm">
-              Feedback
+              الملاحظات
             </Button>
             <div className="h-8 w-8 rounded-full bg-primary"></div>
           </div>
@@ -42,11 +42,11 @@ export default async function Dashboard() {
       <main className="container px-4 py-8">
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight">
-            Let&apos;s build something new.
+            دعونا نبني مشروعا جديدا{" "}
           </h1>
           <p className="mt-4 text-muted-foreground">
-            Import a GitHub repository to add internationalization with
-            react-intl or get started with one of our templates.
+            استورد مستودع غيتهاب لإضافة التدويل باستخدام react-intl أو ابدأ
+            باستخدام أحد قوالبنا{" "}
           </p>
         </div>
 
@@ -54,21 +54,21 @@ export default async function Dashboard() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Active Projects
+                المشاريع النشطة
               </CardTitle>
               <Globe className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">12</div>
               <p className="text-xs text-muted-foreground">
-                +2 from last month
+                +2 عن الشهر الماضي
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Languages Supported
+                اللغات المدعومة
               </CardTitle>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,21 +86,21 @@ export default async function Dashboard() {
             <CardContent>
               <div className="text-2xl font-bold">54</div>
               <p className="text-xs text-muted-foreground">
-                +5 new languages added
+                +5 لغات جديدة مضافة
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Recent Activity
+                النشاط الأخير
               </CardTitle>
               <Clock className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">24h ago</div>
+              <div className="text-2xl font-bold">منذ 24 ساعة</div>
               <p className="text-xs text-muted-foreground">
-                Last project processed
+                آخر مشروع تمت معالجته
               </p>
             </CardContent>
           </Card>
@@ -108,9 +108,7 @@ export default async function Dashboard() {
 
         <div className="mx-auto flex max-w-5xl flex-col gap-8 md:flex-row">
           <div className="flex-1 rounded-lg border bg-card p-6 shadow-sm">
-            <h2 className="mb-6 text-xl font-semibold">
-              Import Git Repository
-            </h2>
+            <h2 className="mb-6 text-xl font-semibold">استيراد مستودع</h2>
 
             <div className="mb-6 flex items-center gap-2">
               <RepositoryDialog />
@@ -142,9 +140,9 @@ export default async function Dashboard() {
 
           <div className="flex-1 rounded-lg border bg-card p-6 shadow-sm">
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Templates</h2>
+              <h2 className="text-xl font-semibold">قوالب</h2>
               <Button variant="outline" size="sm">
-                Framework
+                إطارات
               </Button>
             </div>
 

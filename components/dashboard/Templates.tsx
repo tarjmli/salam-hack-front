@@ -5,29 +5,28 @@ const templates = [
   {
     id: "1",
     title: "Next.js + react-intl",
-    description:
-      "A starter template with Next.js and react-intl pre-configured",
+    description: "قالب بداية مع Next.js و react-intl مُعد مسبقًا",
     image:
       "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a378b4384f2/Screenshot-2025-02-05-154032.png?s=medium",
   },
   {
     id: "2",
     title: "React + i18next",
-    description: "A React template with i18next for internationalization",
+    description: "قالب React مع i18next لدعم الترجمة والتدويل",
     image:
       "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a375c24fabe/Screenshot-2025-02-05-152754.png?s=medium",
   },
   {
     id: "3",
     title: "E-commerce Starter",
-    description: "Multi-language e-commerce template with product catalog",
+    description: "قالب تجارة إلكترونية متعدد اللغات مع كتالوج للمنتجات",
     image:
       "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/64a42fba0b3f3/image2023-07-04153738611.png?s=medium",
   },
   {
     id: "4",
     title: "Blog Platform",
-    description: "Multilingual blog platform with content management",
+    description: "منصة تدوين متعددة اللغات مع إدارة المحتوى",
     image:
       "https://mostaql.hsoubcdn.com/uploads/thumbnails/1565655/67a377d9ef2a8/1733768749612.jpg?s=medium",
   },
@@ -59,7 +58,7 @@ export default function TemplateSection() {
               {template.description}
             </p>
             <Button className="mt-3 w-full" variant="outline" size="sm">
-              Use Template
+              استخدم القالب{" "}
             </Button>
           </div>
         </div>

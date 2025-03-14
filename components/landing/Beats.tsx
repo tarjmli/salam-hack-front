@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Play, Pause, ExternalLink } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 interface Beat {
   id: string;
@@ -133,7 +134,7 @@ export default function BeatsSection() {
                 <Card className="bg-gray-900 border-purple-500 hover:border-purple-400 transition-colors">
                   <CardContent className="p-6">
                     <div className="relative h-40 bg-purple-900 rounded-md overflow-hidden mb-4">
-                      <img
+                      <Image
                         src={beat.image || "/placeholder.svg"}
                         alt={beat.name}
                         className="w-full h-full object-cover"
