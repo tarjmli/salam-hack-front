@@ -1,3 +1,4 @@
+import RepositoryDialog from "@/components/dashboard/RepositoryDialog";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,8 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { DialogHeader } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GithubApi from "@/lib/api/github";
+import { Dialog, DialogContent, DialogDescription, DialogPortal, DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
+import { Portal } from "@radix-ui/react-portal";
 import { Github, Globe, Clock, ArrowRight } from "lucide-react";
 
 // This would be a protected route in a real application
@@ -20,12 +24,12 @@ export default async function DashboardPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mb-8 flex items-center justify-between">
+      
+      <div className=" relative mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Dashboard</h1>
-        <Button>
-          <Github className="mr-2 h-4 w-4" />
-          Import New Repository
-        </Button>
+       <RepositoryDialog/>
+      
+
       </div>
 
       <Tabs defaultValue="projects" className="space-y-4">
@@ -146,6 +150,7 @@ export default async function DashboardPage() {
           </Card>
         </TabsContent>
       </Tabs>
+    
     </div>
   );
 }
