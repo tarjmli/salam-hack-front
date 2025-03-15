@@ -1,11 +1,11 @@
 import "./globals.css";
 import ReactQueryProvider from "@/lib/providers/react-query";
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Righteous } from "next/font/google";
 import AuthProvider from "@/components/auth/AuthProvider.server";
 import { Toaster } from "sonner";
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+const spaceGrotesk = Righteous({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "tarjemli - Premium Beats",

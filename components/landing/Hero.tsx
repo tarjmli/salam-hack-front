@@ -128,7 +128,7 @@ export default function I18nGeminiHero() {
     // bg-gradient-to-b from-zinc-900/50 to-zinc-900
     <section
       ref={containerRef}
-      className="min-h-screen  w-full relative overflow-hidden "
+      className="min-h-screen w-full   relative overflow-hidden "
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 "></div>
@@ -138,7 +138,7 @@ export default function I18nGeminiHero() {
       </div>
 
       {/* Gemini Effect SVG Container */}
-      <div className="absolute inset-0 w-screen h-full">
+      <div className="absolute inset-0 w-full h-full">
         <svg
           width="100%"
           height="100%"
