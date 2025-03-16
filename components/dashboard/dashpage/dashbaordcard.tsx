@@ -1,6 +1,9 @@
-import { GlowingEffect } from "@/components/animation/glowing_eff";
-import ShinyText from "@/components/animation/shinytext";
-import { CardContent, CardHeader, CardTitle, Card } from "@/components/ui/card";
+"use client";
+
+import type React from "react";
+
+import { useState, useRef, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export interface DashcardProps {
   title: string;
@@ -9,39 +12,60 @@ export interface DashcardProps {
   thirdtitle?: string;
 }
 
-export const Dashcard = (props: DashcardProps) => {
+export const Dashcard = ({
+  title,
+  icon,
+  subtitle,
+  thirdtitle,
+}: DashcardProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+
+    // Calculate position relative to the card
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setPosition({ x, y });
+  };
+
   return (
-    <div className="relative group flex items-center justify-center">
-    
-      
-      <div className="absolute inset-0 -z-10 flex items-center justify-center">
-        <GlowingEffect
-          className="w-[140%] h-[140%] rounded-3xl border-4 border-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-3xl"
-          glow={true}
-          borderWidth={6}
-          spread={100}
-          blur={25}
+    <Card
+      ref={cardRef}
+      className="relative border rounded-lg overflow-hidden group"
+      onMouseMove={handleMouseMove}
+    >
+      {/* Light effect that follows mouse */}
+      {isMounted && (
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle 120px at ${position.x}px ${position.y}px, rgba(var(--primary-rgb), 0.15), transparent 40%)`,
+          }}
         />
-      </div>
+      )}
 
-      
-      <Card className="relative z-10 border rounded-3xl p-8 dark:shadow-[0px_0px_60px_10px_#2D2D2D] bg-background/80 backdrop-blur-lg transition-transform duration-300 hover:scale-105">
-   
-        <CardHeader className="flex flex-row items-center justify-between pb-4 gap-x-2">
-          <ShinyText text={props.title} disabled={false} speed={1.5} className="text-lg font-semibold" />
-          <span className="h-6 w-6">{props.icon}</span>
+      <div className="relative z-10 transition-transform duration-300 group-hover:scale-[1.02]">
+        <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+          <CardTitle className="text-sm font-medium">{title}</CardTitle>
+          <div className="text-muted-foreground">{icon}</div>
         </CardHeader>
-
-    
-        <CardContent className="space-y-3">
-          <div className="text-3xl font-extrabold">
-            <ShinyText text={props.subtitle || ""} disabled={false} speed={1.2} className="text-4xl font-bold" />
-          </div>
-          <p className="text-sm text-muted-foreground">
-            <ShinyText text={props.thirdtitle || ""} disabled={false} speed={1.1} className="text-base" />
-          </p>
+        <CardContent className="space-y-1">
+          {subtitle && <div className="text-2xl font-bold">{subtitle}</div>}
+          {thirdtitle && (
+            <p className="text-xs text-muted-foreground">{thirdtitle}</p>
+          )}
         </CardContent>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };

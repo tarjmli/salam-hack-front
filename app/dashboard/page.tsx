@@ -1,39 +1,52 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import RepoList from "@/components/dashboard/Repositories";
 import TemplateSection from "@/components/dashboard/Templates";
 import GithubApi from "@/lib/api/github";
 import RepositoryDialog from "@/components/dashboard/RepositoryDialog";
 import { ChartBar, Clock, Globe } from "lucide-react";
-import Link from "next/link";
-import Magnet from "@/components/animation/magnet";
 import { Dashmain } from "@/components/dashboard/dashpage/dashmain";
 import { Dashcard } from "@/components/dashboard/dashpage/dashbaordcard";
-
+const element = [
+  {
+    id: 1,
+    name: "المشاريع النشطة",
+    icon: <Globe className="h-4 w-4 text-muted-foreground" />,
+    subtitle: " 12",
+    thirdtitle: "+2 عن الشهر الماضي",
+  },
+  {
+    id: 2,
+    name: "اللغات المدعومة",
+    icon: <Clock className="h-4 w-4 text-muted-foreground" />,
+    subtitle: "54",
+    thirdtitle: " +5 لغات جديدة مضافة",
+  },
+  {
+    id: 3,
+    name: "النشاط الأخير",
+    icon: <ChartBar className="h-4 w-4 text-muted-foreground" />,
+    subtitle: "24 ساعة",
+    thirdtitle: "آخر مشروع تمت معالجته",
+  },
+];
 export default async function Dashboard() {
   const { data: repos } = await GithubApi.fetchRepos();
-  const element =[
-    {id:1, name:"المشاريع النشطة",icon:<Globe className="h-4 w-4 text-muted-foreground" />,subtitle :" 12", thirdtitle:"+2 عن الشهر الماضي"},
-    {id:2, name:"اللغات المدعومة",icon: <Clock className="h-4 w-4 text-muted-foreground" /> ,subtitle :"54",thirdtitle:" +5 لغات جديدة مضافة"},
-    {id:3, name:"النشاط الأخير",icon:<ChartBar className="h-4 w-4 text-muted-foreground" />,subtitle :"ذ 24 ساعة" ,thirdtitle:"آخر مشروع تمت معالجته"},
-   
-  ]
+
   return (
-    
-
-
     <div className="min-h-screen bg-background">
-     
-
       <main className="container my-2 px-4 py-8">
-       <Dashmain/>
+        <Dashmain />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-5xl py-6">
           {element.map((el) => (
-              <Dashcard key={el.id}  icon={el.icon} title={el.name} subtitle={el.subtitle} thirdtitle={el.thirdtitle} />
-
-            ))}
-         
+            <Dashcard
+              key={el.id}
+              icon={el.icon}
+              title={el.name}
+              subtitle={el.subtitle}
+              thirdtitle={el.thirdtitle}
+            />
+          ))}
         </div>
 
         <div className="mx-auto flex max-w-5xl flex-col gap-8 md:flex-row">
