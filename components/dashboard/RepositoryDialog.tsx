@@ -32,7 +32,6 @@ import {
 } from "../ui/collapsible";
 import { Checkbox } from "../ui/checkbox";
 import { Badge } from "../ui/badge";
-
 import AnimatedContent from "../animation/Animatedcontent";
 
 export default function RepositoryDialog() {
@@ -71,34 +70,30 @@ export default function RepositoryDialog() {
       .filter(Boolean);
     form.setValue("directory", directories);
   };
- 
+
   return (
-    <Dialog
-      open={open}
-      onOpenChange={setOpen}
-     
-    >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant={"secondary"} className="dark:text-dark-foreground">
+        <Button variant={"secondary"}>
           <Github className="mr-2 h-4 w-4" />
           <span>إضافة مستودع</span>
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="dark:bg-dark-foreground sm:max-w-[425px]">
+      <DialogContent className="bg-black sm:max-w-[425px] opacity-100 !important transition-none">
         <AnimatedContent>
           <DialogHeader>
-            <DialogTitle className="dark:text-dark-foreground">
-              إضافة مستودع
-            </DialogTitle>
+            <DialogTitle>إضافة مستودع</DialogTitle>
             <DialogDescription className="dark:text-dark-foreground">
               أدخل تفاصيل المستودع لاستيراده إلى مشروعك.
             </DialogDescription>
           </DialogHeader>
         </AnimatedContent>
+
         <AnimatedContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              {/* Repository Name */}
               <AnimatedContent>
                 <FormField
                   control={form.control}
@@ -120,6 +115,8 @@ export default function RepositoryDialog() {
                   )}
                 />
               </AnimatedContent>
+
+              {/* Repository Description */}
               <AnimatedContent>
                 <FormField
                   control={form.control}
@@ -141,6 +138,8 @@ export default function RepositoryDialog() {
                   )}
                 />
               </AnimatedContent>
+
+              {/* Repository URL */}
               <AnimatedContent>
                 <FormField
                   control={form.control}
@@ -162,6 +161,8 @@ export default function RepositoryDialog() {
                   )}
                 />
               </AnimatedContent>
+
+              {/* Languages Selection */}
               <AnimatedContent>
                 <FormField
                   control={form.control}
@@ -174,7 +175,10 @@ export default function RepositoryDialog() {
                       <FormControl>
                         <Collapsible
                           open={languageOpen}
-                          onOpenChange={setLanguageOpen}
+                          onOpenChange={(isOpen) => {
+                            if (!isOpen) return;
+                            setLanguageOpen(isOpen);
+                          }}
                           className="border rounded-md dark:border-dark-muted"
                         >
                           <CollapsibleTrigger asChild>
@@ -182,11 +186,7 @@ export default function RepositoryDialog() {
                               <div className="flex flex-wrap gap-1">
                                 {selectedLanguages.length > 0 ? (
                                   selectedLanguages.map((lang) => (
-                                    <Badge
-                                      key={lang}
-                                      variant="secondary"
-                                      className="dark:text-dark-foreground"
-                                    >
+                                    <Badge key={lang} variant="secondary" className="dark:text-dark-foreground">
                                       {lang}
                                     </Badge>
                                   ))
@@ -206,24 +206,14 @@ export default function RepositoryDialog() {
                           <CollapsibleContent className="p-2 border-t dark:border-dark-muted">
                             <div className="grid grid-cols-2 gap-2">
                               {lang.map((language) => (
-                                <div
-                                  key={language.value}
-                                  className="flex items-center space-x-2"
-                                >
+                                <div key={language.value} className="flex items-center space-x-2">
                                   <Checkbox
                                     id={`language-${language.value}`}
-                                    checked={field.value?.includes(
-                                      language.value
-                                    )}
+                                    checked={field.value?.includes(language.value)}
                                     onCheckedChange={(checked) => {
                                       const newValue = checked
-                                        ? [
-                                            ...(field.value || []),
-                                            language.value,
-                                          ]
-                                        : field.value?.filter(
-                                            (v) => v !== language.value
-                                          ) || [];
+                                        ? [...(field.value || []), language.value]
+                                        : field.value?.filter((v) => v !== language.value) || [];
                                       field.onChange(newValue);
                                     }}
                                   />
@@ -244,41 +234,11 @@ export default function RepositoryDialog() {
                   )}
                 />
               </AnimatedContent>
-              <AnimatedContent>
-                <FormField
-                  control={form.control}
-                  name="directory"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="dark:text-dark-foreground">
-                        دليل المكونات
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="src/components, src/pages"
-                          value={
-                            Array.isArray(field.value)
-                              ? field.value.join(", ")
-                              : ""
-                          }
-                          onChange={(e) => handleDirectoryChange(e)}
-                          className="dark:border-dark-muted dark:bg-dark-elevation-1 dark:text-dark-foreground"
-                        />
-                      </FormControl>
-                      <FormDescription className="text-xs dark:text-dark-foreground">
-                        أدخل أدلة متعددة، مفصولة بفواصل
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </AnimatedContent>
+
+              {/* Submit Button */}
               <AnimatedContent>
                 <div className="flex justify-end pt-2">
-                  <Button
-                    type="submit"
-                    className="rounded-md dark:text-dark-foreground"
-                  >
+                  <Button type="submit" className="rounded-md dark:text-dark-foreground">
                     استيراد المستودع
                   </Button>
                 </div>
@@ -290,4 +250,3 @@ export default function RepositoryDialog() {
     </Dialog>
   );
 }
-
