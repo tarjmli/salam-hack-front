@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SettingsPage() {
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 py-2 px-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">الإعدادات</h1>
         <p className="text-muted-foreground">
@@ -22,36 +22,18 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="profile" className="space-y-4" dir="rtl">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-6">
-          <TabsTrigger value="profile">الملف الشخصي</TabsTrigger>
-          <TabsTrigger value="i18n">التدويل</TabsTrigger>
-          <TabsTrigger value="api">واجهة البرمجة (API)</TabsTrigger>
-          <TabsTrigger value="appearance">المظهر</TabsTrigger>
-        </TabsList>
-
+      
         <TabsContent value="profile">
           <Card>
             <ProfileSettings />
           </Card>
         </TabsContent>
 
-        <TabsContent value="i18n">
-          <Card>
-            <InternationalizationSettings />
-          </Card>
-        </TabsContent>
+      
 
-        <TabsContent value="api">
-          <Card>
-            <ApiSettings />
-          </Card>
-        </TabsContent>
+       
 
-        <TabsContent value="appearance">
-          <Card>
-            <AppearanceSettings />
-          </Card>
-        </TabsContent>
+       
       </Tabs>
     </div>
   );

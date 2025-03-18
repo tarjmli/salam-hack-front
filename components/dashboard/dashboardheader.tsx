@@ -10,28 +10,34 @@ export const DashboardHeader = () => {
         <div className="container flex h-16 items-center justify-between px-4">
           <Magnet>
             <Link href={"/"}>
-            <Button variant="ghost" size="sm" >
-              <span className="hover:opacity-80">
-                <ShinyText  text="ترجملي"  disabled={false} speed ={1.5} className="text-xl font-bold  transition duration-300 ease-in-out hover:underline"/>
+            <Button variant="ghost" size="sm" className="font-bold text-xl">
+              <span className="hover:opacity-80 text-white">
+                ترجملي
               </span>
             </Button>
             </Link>
           </Magnet>
           
           <div className="flex items-center gap-4">
-            <Button  variant={"ghost"}  size="sm" >
+            <Button  variant={"ghost"}  size="sm" className="font-bold text-xl">
               <Link href={"/dashboard"}>
-                <span className="hover:opacity-80">
-                  <ShinyText text="المساعدة"  disabled={false} speed ={1.5}  className="text-xl font-bold  transition duration-300 ease-in-out hover:underline"/>
+                <span className="hover:opacity-80 text-white">
+                  الصفحة الرئيسية
                 </span>
               </Link>
             </Button>
-            <Button variant={"ghost"} size="sm">
-              <ShinyText text="الدعم"  disabled={false} speed ={1.5}  className="text-xl font-bold transition duration-300 ease-in-out hover:underline"/>
+            <Link href={"/dashboard/da3m"}>
+            <Button variant={"ghost"} size="sm" className="font-bold text-xl">
+              <span className="hover:opacity-80 text-white">
+                الدعم
+              </span>
             </Button>
+            </Link>
             <Link href={"/dashboard/settings"}>
-              <Button variant="ghost" size="sm">
-                <ShinyText text="الإعدادات"  disabled={false} speed ={1.5}  className="text-xl font-bold transition duration-300 ease-in-out hover:underline"/>
+              <Button variant="ghost" size="sm" className="font-bold text-xl">
+                <span className="hover:opacity-80 text-white">
+                  الإعدادات
+                </span>
               </Button>
             </Link>
            
@@ -43,5 +49,4 @@ export const DashboardHeader = () => {
     )
 
 }
-
 

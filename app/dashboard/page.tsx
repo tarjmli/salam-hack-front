@@ -81,18 +81,10 @@ export default async function Dashboard() {
             <RepoList repos={repos} />
           </div>
 
-          <div className="flex-1 rounded-lg border bg-card p-6 shadow-sm">
-            <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">قوالب</h2>
-              <Button variant="outline" size="sm">
-                إطارات
-              </Button>
-            </div>
-
-            <TemplateSection />
-          </div>
+          
         </div>
       </main>
     </div>
   );
 }
+
