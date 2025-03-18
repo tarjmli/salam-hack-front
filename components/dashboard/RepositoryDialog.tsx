@@ -71,21 +71,27 @@ export default function RepositoryDialog() {
       .filter(Boolean);
     form.setValue("directory", directories);
   };
-
+ 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={setOpen}
+     
+    >
       <DialogTrigger asChild>
-        <Button variant={"secondary"}>
+        <Button variant={"secondary"} className="dark:text-dark-foreground">
           <Github className="mr-2 h-4 w-4" />
           <span>إضافة مستودع</span>
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="dark:bg-dark-foreground sm:max-w-[425px]">
         <AnimatedContent>
           <DialogHeader>
-            <DialogTitle>إضافة مستودع</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="dark:text-dark-foreground">
+              إضافة مستودع
+            </DialogTitle>
+            <DialogDescription className="dark:text-dark-foreground">
               أدخل تفاصيل المستودع لاستيراده إلى مشروعك.
             </DialogDescription>
           </DialogHeader>
@@ -99,9 +105,15 @@ export default function RepositoryDialog() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>اسم المستودع</FormLabel>
+                      <FormLabel className="dark:text-dark-foreground">
+                        اسم المستودع
+                      </FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="أدخل اسمًا للمستودع" />
+                        <Input
+                          {...field}
+                          placeholder="أدخل اسمًا للمستودع"
+                          className="dark:border-dark-muted dark:bg-dark-elevation-1 dark:text-dark-foreground"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -114,9 +126,15 @@ export default function RepositoryDialog() {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>الوصف</FormLabel>
+                      <FormLabel className="dark:text-dark-foreground">
+                        الوصف
+                      </FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="أدخل وصفًا" />
+                        <Input
+                          {...field}
+                          placeholder="أدخل وصفًا"
+                          className="dark:border-dark-muted dark:bg-dark-elevation-1 dark:text-dark-foreground"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -129,11 +147,14 @@ export default function RepositoryDialog() {
                   name="repoURl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>رابط المستودع</FormLabel>
+                      <FormLabel className="dark:text-dark-foreground">
+                        رابط المستودع
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="https://github.com/owner/repo"
                           {...field}
+                          className="dark:border-dark-muted dark:bg-dark-elevation-1 dark:text-dark-foreground"
                         />
                       </FormControl>
                       <FormMessage />
@@ -147,24 +168,30 @@ export default function RepositoryDialog() {
                   name="language"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>اللغات</FormLabel>
+                      <FormLabel className="dark:text-dark-foreground">
+                        اللغات
+                      </FormLabel>
                       <FormControl>
                         <Collapsible
                           open={languageOpen}
                           onOpenChange={setLanguageOpen}
-                          className="border rounded-md"
+                          className="border rounded-md dark:border-dark-muted"
                         >
                           <CollapsibleTrigger asChild>
-                            <div className="flex items-center justify-between p-2 cursor-pointer hover:bg-muted">
+                            <div className="flex items-center justify-between p-2 cursor-pointer hover:bg-muted dark:hover:bg-dark-elevation-1">
                               <div className="flex flex-wrap gap-1">
                                 {selectedLanguages.length > 0 ? (
                                   selectedLanguages.map((lang) => (
-                                    <Badge key={lang} variant="secondary">
+                                    <Badge
+                                      key={lang}
+                                      variant="secondary"
+                                      className="dark:text-dark-foreground"
+                                    >
                                       {lang}
                                     </Badge>
                                   ))
                                 ) : (
-                                  <span className="text-muted-foreground">
+                                  <span className="text-muted-foreground dark:text-dark-foreground">
                                     اختر اللغات
                                   </span>
                                 )}
@@ -176,7 +203,7 @@ export default function RepositoryDialog() {
                               />
                             </div>
                           </CollapsibleTrigger>
-                          <CollapsibleContent className="p-2 border-t">
+                          <CollapsibleContent className="p-2 border-t dark:border-dark-muted">
                             <div className="grid grid-cols-2 gap-2">
                               {lang.map((language) => (
                                 <div
@@ -202,7 +229,7 @@ export default function RepositoryDialog() {
                                   />
                                   <label
                                     htmlFor={`language-${language.value}`}
-                                    className="text-sm cursor-pointer"
+                                    className="text-sm cursor-pointer dark:text-dark-foreground"
                                   >
                                     {language.label}
                                   </label>
@@ -223,7 +250,9 @@ export default function RepositoryDialog() {
                   name="directory"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>دليل المكونات</FormLabel>
+                      <FormLabel className="dark:text-dark-foreground">
+                        دليل المكونات
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="src/components, src/pages"
@@ -233,9 +262,10 @@ export default function RepositoryDialog() {
                               : ""
                           }
                           onChange={(e) => handleDirectoryChange(e)}
+                          className="dark:border-dark-muted dark:bg-dark-elevation-1 dark:text-dark-foreground"
                         />
                       </FormControl>
-                      <FormDescription className="text-xs">
+                      <FormDescription className="text-xs dark:text-dark-foreground">
                         أدخل أدلة متعددة، مفصولة بفواصل
                       </FormDescription>
                       <FormMessage />
@@ -245,7 +275,10 @@ export default function RepositoryDialog() {
               </AnimatedContent>
               <AnimatedContent>
                 <div className="flex justify-end pt-2">
-                  <Button type="submit" className="rounded-md">
+                  <Button
+                    type="submit"
+                    className="rounded-md dark:text-dark-foreground"
+                  >
                     استيراد المستودع
                   </Button>
                 </div>
@@ -257,3 +290,4 @@ export default function RepositoryDialog() {
     </Dialog>
   );
 }
+
