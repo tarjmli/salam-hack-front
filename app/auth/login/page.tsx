@@ -54,7 +54,6 @@ export default function LoginPage() {
           </h1>
         </div>
 
-        {/* Form Container */}
         <div className="border border-[#D9DCE2] rounded-md flex flex-col md:flex-row md:space-x-16 p-6 sm:p-10 md:p-16 w-full">
           <div className="flex-1 mb-6 md:mb-0">
             <h1 className="text-xl sm:text-2xl font-medium mb-3.5">Welcome</h1>
