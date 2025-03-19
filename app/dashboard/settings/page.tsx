@@ -28,12 +28,6 @@ export default function SettingsPage() {
             <ProfileSettings />
           </Card>
         </TabsContent>
-
-      
-
-       
-
-       
       </Tabs>
     </div>
   );
