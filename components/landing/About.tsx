@@ -48,7 +48,7 @@ export default function AboutSection() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/0 rounded-3xl transform -rotate-6"></div>
             <Image
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/1200px-Google_Translate_logo.svg.png"
+              src="/assets/terjemli.svg"
               alt="tarjemli"
               width={600}
               height={600}

@@ -3,7 +3,7 @@
 import { IRepo } from "@/types/github";
 import { Folder, Globe } from "lucide-react";
 import TranslateDialog from "./TranslateDialog";
-import { useTarjimQuery } from "@/lib/services/github.service";
+// import { useTarjimQuery } from "@/lib/services/github.service";
 
 type Props = {
   repos: IRepo[];
@@ -11,9 +11,9 @@ type Props = {
 
 export default function RepoList({ repos }: Props) {
   console.log({ repos });
-  const { data } = useTarjimQuery();
+  // const { data } = useTarjimQuery();
 
-  console.log({ data });
+  // console.log({ data });
 
   return (
     <div className="space-y-2">
