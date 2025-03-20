@@ -1,10 +1,7 @@
 import { Metadata } from "next";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import ProfileSettings from "@/components/dashboard/settings/ProfileSettings";
-import ApiSettings from "@/components/dashboard/settings/ApiSettings";
-import InternationalizationSettings from "@/components/dashboard/settings/InternationalizationSettings";
-import AppearanceSettings from "@/components/dashboard/settings/AppearanceSettings";
 
 export const metadata: Metadata = {
   title: "Settings - Tarjemli",
@@ -13,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function SettingsPage() {
   return (
-    <div className="container mx-auto py-10 py-2 px-6">
+    <div className="container mx-auto py-10 px-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">الإعدادات</h1>
         <p className="text-muted-foreground">
@@ -22,7 +19,6 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="profile" className="space-y-4" dir="rtl">
-      
         <TabsContent value="profile">
           <Card>
             <ProfileSettings />

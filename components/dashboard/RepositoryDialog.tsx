@@ -33,6 +33,7 @@ import {
 import { Checkbox } from "../ui/checkbox";
 import { Badge } from "../ui/badge";
 import AnimatedContent from "../animation/Animatedcontent";
+import { useCreateRepoMutation } from "@/lib/services/github.service";
 
 export default function RepositoryDialog() {
   const [open, setOpen] = useState(false);
@@ -49,9 +50,15 @@ export default function RepositoryDialog() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof reposhema>) {
-    setOpen(false);
-    console.log("Submitted values:", values);
+  async function onSubmit(values: z.infer<typeof reposhema>) {
+    try {
+      console.log({ Hh: values });
+      const response = await createRepo(values);
+    } catch (e) {
+      console.log("error", e);
+    } finally {
+      setOpen(false);
+    }
   }
 
   const lang = [
@@ -70,6 +77,8 @@ export default function RepositoryDialog() {
       .filter(Boolean);
     form.setValue("directory", directories);
   };
+
+  const { mutateAsync: createRepo } = useCreateRepoMutation();
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -186,7 +195,11 @@ export default function RepositoryDialog() {
                               <div className="flex flex-wrap gap-1">
                                 {selectedLanguages.length > 0 ? (
                                   selectedLanguages.map((lang) => (
-                                    <Badge key={lang} variant="secondary" className="dark:text-dark-foreground">
+                                    <Badge
+                                      key={lang}
+                                      variant="secondary"
+                                      className="dark:text-dark-foreground"
+                                    >
                                       {lang}
                                     </Badge>
                                   ))
@@ -206,14 +219,24 @@ export default function RepositoryDialog() {
                           <CollapsibleContent className="p-2 border-t dark:border-dark-muted">
                             <div className="grid grid-cols-2 gap-2">
                               {lang.map((language) => (
-                                <div key={language.value} className="flex items-center space-x-2">
+                                <div
+                                  key={language.value}
+                                  className="flex items-center space-x-2"
+                                >
                                   <Checkbox
                                     id={`language-${language.value}`}
-                                    checked={field.value?.includes(language.value)}
+                                    checked={field.value?.includes(
+                                      language.value
+                                    )}
                                     onCheckedChange={(checked) => {
                                       const newValue = checked
-                                        ? [...(field.value || []), language.value]
-                                        : field.value?.filter((v) => v !== language.value) || [];
+                                        ? [
+                                            ...(field.value || []),
+                                            language.value,
+                                          ]
+                                        : field.value?.filter(
+                                            (v) => v !== language.value
+                                          ) || [];
                                       field.onChange(newValue);
                                     }}
                                   />
@@ -238,7 +261,10 @@ export default function RepositoryDialog() {
               {/* Submit Button */}
               <AnimatedContent>
                 <div className="flex justify-end pt-2">
-                  <Button type="submit" className="rounded-md dark:text-dark-foreground">
+                  <Button
+                    type="submit"
+                    className="rounded-md dark:text-dark-foreground"
+                  >
                     استيراد المستودع
                   </Button>
                 </div>

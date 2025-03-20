@@ -30,7 +30,6 @@ export default function LoginPage() {
       password: Yup.string().required("Password required"),
     }),
     async onSubmit(values) {
-      console.log(values);
       try {
         // Simulate login API call
         await login(values);
@@ -49,22 +48,20 @@ export default function LoginPage() {
       <div className="space-y-7 w-full">
         {/* Header */}
         <div className="flex justify-center items-center space-x-4 mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-            Salam Hack
-          </h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">ترجملي</h1>
         </div>
 
         <div className="border border-[#D9DCE2] rounded-md flex flex-col md:flex-row md:space-x-16 p-6 sm:p-10 md:p-16 w-full">
           <div className="flex-1 mb-6 md:mb-0">
-            <h1 className="text-xl sm:text-2xl font-medium mb-3.5">Welcome</h1>
+            <h1 className="text-xl sm:text-2xl font-medium mb-3.5">أهلا</h1>
             <div className="space-y-4 text-sm sm:text-base">
               <p>
-                {`You are one step away from accessing a powerful tool designed to
-                simplify your workflow. In just a few clicks, access all your
-                projects, tasks, and reminders, and keep everything up to date.`}
+                {`أنت على بُعد خطوة واحدة من الوصول إلى أداة فعّالة مُصممة لتبسيط سير عملك. ببضع نقرات فقط، يمكنك الوصول إلى جميع مشاريعك ومهامك وتذكيراتك، والحفاظ على تحديثها باستمرار.
+                مساحة عمل مُخصصة مُصممة خصيصًا لتلبية احتياجاتك.
+                سجّل الدخول ولنبدأ`}
               </p>
-              <p>A personalized workspace - tailored to your needs.</p>
-              <p>Log in and lets get started</p>
+              <p>مساحة عمل مُخصصة - مُصممة خصيصًا لتلبية احتياجاتك.</p>
+              <p>سجّل دخولك وابدأ</p>
             </div>
           </div>
 
@@ -73,12 +70,12 @@ export default function LoginPage() {
             <form className="space-y-4" onSubmit={loginFormik.handleSubmit}>
               <div className="space-y-2">
                 <Label htmlFor="email" className="font-semibold mb-1">
-                  Email
+                  البريد الإلكتروني
                 </Label>
                 <Input
                   id="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="البريد الإلكتروني"
                   className="focus-visible:ring-primary"
                   value={loginFormik.values.email}
                   onChange={loginFormik.handleChange}
@@ -92,13 +89,13 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="password" className="font-semibold mb-1">
-                  Password
+                  كلمة المرور
                 </Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="Password"
+                  placeholder="كلمة المرور"
                   value={loginFormik.values.password}
                   onChange={loginFormik.handleChange}
                   className="focus-visible:ring-primary"
@@ -113,10 +110,12 @@ export default function LoginPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-medium"
+                className="w-full bg-primary hover:bg-primary/90 font-medium"
                 disabled={loginFormik.isSubmitting}
               >
-                {loginFormik.isSubmitting ? "Logging in..." : "Log in"}
+                {loginFormik.isSubmitting
+                  ? "جاري تسجيل الدخول..."
+                  : "تسجيل الدخول"}
               </Button>
             </form>
           </div>

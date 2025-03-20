@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import RepoList from "@/components/dashboard/Repositories";
-import TemplateSection from "@/components/dashboard/Templates";
 import GithubApi from "@/lib/api/github";
 import RepositoryDialog from "@/components/dashboard/RepositoryDialog";
 import { ChartBar, Clock, Globe } from "lucide-react";
 import { Dashmain } from "@/components/dashboard/dashpage/dashmain";
 import { Dashcard } from "@/components/dashboard/dashpage/dashbaordcard";
+import { useTarjimQuery } from "@/lib/services/github.service";
 const element = [
   {
     id: 1,
@@ -31,7 +30,8 @@ const element = [
   },
 ];
 export default async function Dashboard() {
-  const { data: repos } = await GithubApi.fetchRepos();
+  const repos = await GithubApi.fetchRepos();
+  console.log(repos);
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,11 +80,8 @@ export default async function Dashboard() {
 
             <RepoList repos={repos} />
           </div>
-
-          
         </div>
       </main>
     </div>
   );
 }
-
