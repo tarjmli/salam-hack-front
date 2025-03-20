@@ -3,28 +3,28 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Headphones, Music, Mic2, Award } from "lucide-react";
+import { CheckCircle, Clock, Zap, ShieldCheck } from "lucide-react";
 
-const achievements = [
+const benefits = [
   {
-    icon: <Headphones className="w-6 h-6" />,
-    label: "سنوات من الخبرة",
-    value: "10+",
+    icon: <CheckCircle className="w-6 h-6" />, 
+    label: "ترجمة دقيقة", 
+    value: "باستخدام الذكاء الاصطناعي أو قيم مترجمة مسبقًا"
   },
   {
-    icon: <Music className="w-6 h-6" />,
-    label: "المسارات المنتجة",
-    value: "500+",
+    icon: <ShieldCheck className="w-6 h-6" />, 
+    label: "اتساق المصطلحات", 
+    value: "لضمان تجربة مستخدم موحدة"
   },
   {
-    icon: <Mic2 className="w-6 h-6" />,
-    label: "الفنانون المتعاونون",
-    value: "100+",
+    icon: <Clock className="w-6 h-6" />, 
+    label: "كفاءة وسرعة", 
+    value: "تقليل الحاجة إلى الترجمة اليدوية"
   },
   {
-    icon: <Award className="w-6 h-6" />,
-    label: "الجوائز المحققة",
-    value: "15+",
+    icon: <Zap className="w-6 h-6" />, 
+    label: "سهولة الاستخدام", 
+    value: "نظام متكامل لسهولة الترجمة والإدارة"
   },
 ];
 
@@ -49,28 +49,25 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/0 rounded-3xl transform -rotate-6"></div>
             <Image
               src="/assets/terjemli.svg"
-              alt="tarjemli"
+              alt="ترجملي"
               width={600}
               height={600}
               className="rounded-3xl relative z-10"
             />
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">حول ترجملي </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">حول ترجملي</h2>
             <p className="text-lg mb-6 text-zinc-300">
-              ترجملي ليس مجرد صانع إيقاعات؛ بل هو مهندس صوتي يرسم ملامح
-              المستقبل. بخبرة تمتد لعقد من الزمن وحسٍّ إبداعي، يتجاوز ترجملي
-              حدود الممكن في إنتاج الموسيقى.{" "}
+              ترجملي هو منصة مبتكرة تسهل عمليات الترجمة والتعريب باستخدام أحدث تقنيات الذكاء الاصطناعي.
+              نهدف إلى توفير حلول ترجمة دقيقة وسريعة تلبي احتياجات الأفراد والشركات.
             </p>
             <p className="text-lg mb-8 text-zinc-300">
-              من الأغاني التي تتصدر المخططات إلى الأغاني الكلاسيكية، يضمن أسلوب
-              درانيل المتنوع واهتمامه الدقيق بالتفاصيل أن كل إيقاع ليس مجرد
-              مسار، بل رحلة تنتظر استكشافها من قبل الفنان المناسب.
+              نحن نؤمن بأن اللغة لا يجب أن تكون حاجزًا، ولذلك نسعى إلى جعل عمليات الترجمة أكثر كفاءة وسهولة من خلال أدوات متقدمة وتقنيات ذكية.
             </p>
             <div className="grid grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
+              {benefits.map((benefit, index) => (
                 <motion.div
-                  key={achievement.label}
+                  key={benefit.label}
                   className="bg-zinc-900/50 rounded-lg p-4 border border-white/10"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -78,13 +75,13 @@ export default function AboutSection() {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center mb-2">
-                    <div className="mr-2 text-white">{achievement.icon}</div>
-                    <div className="text-2xl font-bold">
-                      {achievement.value}
+                    <div className="mr-2 text-white">{benefit.icon}</div>
+                    <div className="text-xl font-bold">
+                      {benefit.label}
                     </div>
                   </div>
                   <div className="text-sm text-zinc-400">
-                    {achievement.label}
+                    {benefit.value}
                   </div>
                 </motion.div>
               ))}
