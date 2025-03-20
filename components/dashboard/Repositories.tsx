@@ -3,6 +3,9 @@
 import { IRepo } from "@/types/github";
 import { Folder, Globe } from "lucide-react";
 import TranslateDialog from "./TranslateDialog";
+import { useState } from "react";
+import { Button } from "../ui/button";
+import { useTarjimMutation } from "@/lib/services/github.service";
 // import { useTarjimQuery } from "@/lib/services/github.service";
 
 type Props = {
@@ -14,7 +17,8 @@ export default function RepoList({ repos }: Props) {
   // const { data } = useTarjimQuery();
 
   // console.log({ data });
-
+  const [open, setOpen] = useState(false);
+  const { mutateAsync: tarjim, isError, isPending } = useTarjimMutation();
   return (
     <div className="space-y-2">
       {repos.map((repo) => (
@@ -40,7 +44,22 @@ export default function RepoList({ repos }: Props) {
           </div>
 
           {/* Bouton de traduction */}
-          <TranslateDialog />
+          <TranslateDialog
+            open={open}
+            onOpenChange={setOpen}
+            isError={isError}
+            isPending={isPending}
+          />
+          <Button
+            size="sm"
+            onClick={async () => {
+              setOpen(true);
+              const response = await tarjim(repo.id);
+              console.log({ rest: response });
+            }}
+          >
+            ترجم
+          </Button>
         </div>
       ))}
     </div>

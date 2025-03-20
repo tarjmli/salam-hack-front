@@ -1,11 +1,11 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import RepoList from "@/components/dashboard/Repositories";
-import GithubApi from "@/lib/api/github";
 import RepositoryDialog from "@/components/dashboard/RepositoryDialog";
 import { ChartBar, Clock, Globe } from "lucide-react";
 import { Dashmain } from "@/components/dashboard/dashpage/dashmain";
 import { Dashcard } from "@/components/dashboard/dashpage/dashbaordcard";
-import { useTarjimQuery } from "@/lib/services/github.service";
+import { useGetReposQuery } from "@/lib/services/github.service";
 const element = [
   {
     id: 1,
@@ -29,10 +29,8 @@ const element = [
     thirdtitle: "آخر مشروع تمت معالجته",
   },
 ];
-export default async function Dashboard() {
-  const repos = await GithubApi.fetchRepos();
-  console.log(repos);
-
+export default function Dashboard() {
+  const { data: repos } = useGetReposQuery();
   return (
     <div className="min-h-screen bg-background">
       <main className="container my-2 px-4 py-8">
@@ -78,7 +76,7 @@ export default async function Dashboard() {
               </div>
             </div>
 
-            <RepoList repos={repos} />
+            <RepoList repos={repos || []} />
           </div>
         </div>
       </main>
