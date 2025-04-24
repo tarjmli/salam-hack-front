@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Magnet from "../animation/magnet"
 import { Button } from "../ui/button"
-import ShinyText from "../animation/shinytext"
 
 export const DashboardHeader = () => {
     return(

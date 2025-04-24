@@ -1,4 +1,3 @@
-import { BackgroundLines } from "@/components/animation/background-lines"
 import ShinyText from "@/components/animation/shinytext"
 
 export const Dashmain=()=>{
